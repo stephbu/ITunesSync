@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ITunesSync" GeneratedClassName="ITunesSync">
+  <Profiles />
+  <Settings>
+    <Setting Name="DeleteUnresolvedTracks" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MusicDirectory" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\storage\music</Value>
+    </Setting>
+    <Setting Name="NoUpdates" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
