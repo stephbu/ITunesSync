@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace ITunesSync
 {
     class Program
     {
+        const int MAX_PATH = 260;
+
         static void Main(string[] args)
         {
             iTunesLib.iTunesApp app = null;
             Console.WriteLine("ITunes Synchronization");
             try
             {
-                app = new iTunesLib.iTunesApp();
 
+                app = new iTunesLib.iTunesApp();
                 Console.WriteLine("ITunes Version " + app.Version);
 
                 iTunesLib.IITLibraryPlaylist libraryPlaylist = app.LibraryPlaylist;
@@ -62,8 +63,8 @@ namespace ITunesSync
                 {
                     Console.WriteLine("**** NoUpdate Mode Enabled : NO CHANGES WILL BE WRITTEN TO DISK ****");
                 }
-
-                StringBuilder shortPath = new StringBuilder(260);
+                
+                StringBuilder shortPath = new StringBuilder(MAX_PATH);
                 foreach (String file in newFiles)
                 {
                     if (!File.Exists(file))
@@ -72,7 +73,7 @@ namespace ITunesSync
                     }
                     if (!noUpdates)
                     {
-                        if (file.Length > 260)
+                        if (file.Length > MAX_PATH)
                         {
                             GetShortPathName(file, shortPath, shortPath.Capacity);
                             libraryPlaylist.AddFile(shortPath.ToString());
@@ -99,6 +100,8 @@ namespace ITunesSync
                 }
             }
         }
+
+
         private static void DeleteTrack(iTunesLib.IITTrack track, bool delete)
         {
             Console.WriteLine("Info: Unresolved {0}", track.Name);
